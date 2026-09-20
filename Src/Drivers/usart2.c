@@ -39,3 +39,35 @@ void usart2_write(const char *data){
     }
 
 }
+
+void usart2_write_u32(uint32_t value)
+{
+    char buffer[11];
+    int i = 0;
+
+    if (value == 0)
+    {
+        buffer[0] = '0';
+        buffer[1] = '\0';
+        usart2_write(buffer);
+        return;
+    }
+
+    while (value > 0)
+    {
+        buffer[i++] = '0' + (value % 10);
+        value /= 10;
+    }
+
+    buffer[i] = '\0';
+
+    // digits are currently backwards, so reverse them
+    for (int j = 0; j < i / 2; j++)
+    {
+        char temp = buffer[j];
+        buffer[j] = buffer[i - 1 - j];
+        buffer[i - 1 - j] = temp;
+    }
+
+    usart2_write(buffer);
+}
