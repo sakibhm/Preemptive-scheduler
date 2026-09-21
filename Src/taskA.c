@@ -1,3 +1,6 @@
+#include <stdint.h>
+#include "Drivers/usart2.h"
+
 void fibonacci_seq(void){
     uint32_t a = 0;
     uint32_t b = 1;
@@ -18,5 +21,6 @@ void fibonacci_seq(void){
 void task_a(void){
     while(1){
         fibonacci_seq();
+        usart2_write("\n");
     }
 }

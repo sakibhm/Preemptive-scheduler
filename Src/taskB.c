@@ -1,3 +1,6 @@
+#include <stdint.h>
+#include "Drivers/usart2.h"
+
 void bubble_sort(){
     uint32_t arr[] = {10,8,4,2,6};
     int n =  5;
@@ -22,5 +25,6 @@ void bubble_sort(){
 void task_b(void){
     while(1){
         bubble_sort();
+        usart2_write("\n");
     }
 }

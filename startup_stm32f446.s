@@ -7,12 +7,23 @@
 .global main
 
 .section .vector_table,"a",%progbits
-.word stack
-.word reset_handler + 1
+.word stack             // 0-Initial SP
+.word reset_handler + 1 // 1-Reset
+
+.word 0                 // 2
+.word 0                 // 3
+.word 0                 // 4
+.word 0                 // 5
+.word 0                 // 6
+.word 0                 // 7
+.word 0                 // 8
+.word 0                 // 9
+.word 0                 // 10
+
+.word svc_handler + 1   // 11-SVC
 
 .section .text.reset_handler
 reset_handler :
     bl main
 1:
     b 1b
-    
