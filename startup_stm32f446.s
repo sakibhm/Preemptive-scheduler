@@ -22,6 +22,13 @@
 
 .word svc_handler + 1   // 11-SVC
 
+.word 0              //12
+.word 0              //13
+.word 0              //14
+
+.word Systick_Handler + 1              //15-SysTick
+
+
 .section .text.reset_handler
 reset_handler :
     bl main

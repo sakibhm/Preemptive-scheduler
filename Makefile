@@ -12,7 +12,9 @@ C_OBJECTS = build/main.o \
             build/usart2.o \
 			build/task_init.o \
             build/taskA.o \
-            build/taskB.o
+            build/taskB.o\
+			build/SysTick.o \
+			build/SysTick_handler.o
 
 ASM_OBJECTS = build/startup_stm32f446.o \
 			  build/start_first_task.o \
@@ -50,6 +52,14 @@ build/taskA.o: Src/taskA.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 build/taskB.o: Src/taskB.c
+	mkdir -p build
+	$(CC) $(CFLAGS) -c $< -o $@
+
+build/SysTick.o: Src/Drivers/SysTick.c
+	mkdir -p build
+	$(CC) $(CFLAGS) -c $< -o $@
+
+build/SysTick_handler.o: Src/SysTick_handler.c
 	mkdir -p build
 	$(CC) $(CFLAGS) -c $< -o $@
 

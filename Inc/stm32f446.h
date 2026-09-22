@@ -14,6 +14,7 @@
 #define RCC_BASE          0x40023800UL
 #define GPIOA_BASE        0x40020000UL
 #define USART2_BASE       0x40004400UL
+#define SYSTICK_BASE  0xE000E010UL
 
 
 /* =========================
@@ -101,5 +102,19 @@ typedef struct
 #define USART_CR1_UE           (1U << 13)
 #define USART_CR1_TE           (1U << 3)
 #define USART_CR1_RE           (1U << 2)
+
+typedef struct {
+
+    volatile uint32_t CSR;
+    volatile uint32_t RVR;
+    volatile uint32_t CVR;
+
+}SysTick_typedef;
+
+#define SysTick  ((SysTick_typedef*)SYSTICK_BASE)
+
+#define SysTick_CSR_ENABLE        (1<<0)
+#define SysTick_CSR_TICKINT        (1<<1)
+#define SysTick_CSR_CLKSOURCE        (1<<2)
 
 #endif
