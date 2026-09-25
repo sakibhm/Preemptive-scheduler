@@ -17,14 +17,18 @@ systick_handler :
     LDR r2, [r1]
     STR r0, [r2]
 
+    // pushing EXC_RETURN value onto the MSP stack
     PUSH {lr}
 
+    // branching to C function to take the SP of next task
     bl scheduler
 
+    //loading the Stack of next task
     LDMIA r0!, {r4-r11}
     MSR PSP, r0
 
 
     POP {lr}
 
+    // exception return
     BX lr 
