@@ -6,7 +6,6 @@
 #include "taskA.h"
 #include "taskB.h"
 #include "start_first_task.h"
-//#include "Systick_Handler.h"
 #include "stm32f446.h"
 
 uint32_t taskA_stack[STACK_SIZE];
