@@ -26,7 +26,7 @@
 .word 0              //13
 .word 0              //14
 
-.word Systick_Handler + 1              //15-SysTick
+.word systick_handler + 1              //15-SysTick
 
 
 .section .text.reset_handler

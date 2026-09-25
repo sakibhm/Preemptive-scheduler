@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "Drivers/usart2.h"
+#include "stm32f446.h"
 
 void fibonacci_seq(void){
     uint32_t a = 0;
@@ -7,7 +8,7 @@ void fibonacci_seq(void){
     uint32_t fibonacci_no;
 
     usart2_write("Fibonacci-sequence: ");
-    for(int i = 0; i<10 ; i++){
+    for(int i = 0; i<100 ; i++){
 
         fibonacci_no = a+b;
         b = a;
@@ -20,7 +21,9 @@ void fibonacci_seq(void){
 
 void task_a(void){
     while(1){
-        fibonacci_seq();
-        usart2_write("\n");
+        GPIOA->ODR |= (1<<5);
+        GPIOA->ODR &= ~(1<<6);  //turning on pa5
+        //fibonacci_seq();
+        //usart2_write("\n");
     }
 }

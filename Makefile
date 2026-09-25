@@ -14,11 +14,12 @@ C_OBJECTS = build/main.o \
             build/taskA.o \
             build/taskB.o\
 			build/SysTick.o \
-			build/SysTick_handler.o
+			build/scheduler.o
 
 ASM_OBJECTS = build/startup_stm32f446.o \
 			  build/start_first_task.o \
-			  build/svc_handler.o
+			  build/svc_handler.o \
+			  build/systick_handler.o
 
 OBJECTS = $(C_OBJECTS) $(ASM_OBJECTS)
 
@@ -59,10 +60,10 @@ build/SysTick.o: Src/Drivers/SysTick.c
 	mkdir -p build
 	$(CC) $(CFLAGS) -c $< -o $@
 
-build/SysTick_handler.o: Src/SysTick_handler.c
+
+build/scheduler.o: Src/scheduler.c
 	mkdir -p build
 	$(CC) $(CFLAGS) -c $< -o $@
-
 
 build/startup_stm32f446.o: startup_stm32f446.s
 	mkdir -p build
@@ -73,6 +74,10 @@ build/start_first_task.o: start_first_task.s
 	$(CC) $(CFLAGS) -c $< -o $@
 
 build/svc_handler.o: svc_handler.s
+	mkdir -p build
+	$(CC) $(CFLAGS) -c $< -o $@
+
+build/systick_handler.o: systick_handler.s
 	mkdir -p build
 	$(CC) $(CFLAGS) -c $< -o $@
 

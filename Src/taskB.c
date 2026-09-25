@@ -1,9 +1,11 @@
 #include <stdint.h>
 #include "Drivers/usart2.h"
+#include "stm32f446.h"
+
 
 void bubble_sort(){
-    uint32_t arr[] = {10,8,4,2,6};
-    int n =  5;
+    uint32_t arr[] = {10,6,8,3,5,7,4,2,9,6,1};
+    int n =  10;
 
     for(int i=0 ; i<n-1 ; i++){
         for(int j=0 ; j<n-i-1 ; j++){
@@ -24,7 +26,9 @@ void bubble_sort(){
 
 void task_b(void){
     while(1){
-        bubble_sort();
-        usart2_write("\n");
+        GPIOA->ODR |= (1<<6);
+        GPIOA->ODR &= ~(1<<5);  //turning on pa5
+        //bubble_sort();
+        //usart2_write("\n");
     }
 }
