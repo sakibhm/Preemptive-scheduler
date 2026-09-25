@@ -11,7 +11,7 @@ The scheduler is verified using a **Logic Analyzer**.
 * **Task A (Fibonacci Sequence):** Controls GPIO Pin PA5.
 * **Task B (Bubble Array Sort):** Controls GPIO Pin PA6.
 
-
+![image alt](https://github.com/sakibhm/Preemptive-scheduler/blob/4ff770f4fb75e4af434bd4fb091a1da9c996296a/Screenshot%202026-09-25%20052534.png)
 ---
 
 ## 🛠️ Implementations
